@@ -38,7 +38,10 @@ public class Cellule {
         if(devoilee=false) texte="?";
         else {
             if (presenceBombe=true) texte="?";
-            else ;
+            else {
+                if (nbBombesAdjacentes==0) texte=" ";
+                else texte=""+nbBombesAdjacentes+"";
+            }
         }
         return texte ;
     }
