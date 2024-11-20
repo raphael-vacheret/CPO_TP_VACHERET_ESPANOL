@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package miniprojet;
+import java.util.Random;
 
 /**
  *
@@ -28,6 +29,10 @@ public class GrilledeJeu {
     }
     
     public void placerBombesAleatoirement(){
-        
+        Random random= new Random();
+        int i= random.nextInt(10);
+        int j= random.nextInt(10);
+        System.out.println(i);
+        System.out.println(j);
     }
 }
