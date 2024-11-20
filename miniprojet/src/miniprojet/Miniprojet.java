@@ -14,7 +14,7 @@ public class Miniprojet {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        if damien==damdamdeo raphael="content;)"
+        
     }
     
 }
