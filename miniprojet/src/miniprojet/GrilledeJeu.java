@@ -4,7 +4,7 @@
  */
 package miniprojet;
 import java.util.Random;
-
+import miniprojet.Cellule;
 /**
  *
  * @author bapti
@@ -32,7 +32,9 @@ public class GrilledeJeu {
         Random random= new Random();
         int i= random.nextInt(10);
         int j= random.nextInt(10);
-        System.out.println(i);
-        System.out.println(j);
+        
+        if(this.getNbBombesAdjacentes()==true){
+            
+        }
     }
 }
