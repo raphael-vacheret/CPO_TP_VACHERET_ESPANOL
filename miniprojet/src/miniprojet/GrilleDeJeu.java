@@ -25,6 +25,19 @@ public class GrilleDeJeu {
     public int getNbBombes() {
         return nbBombes;
     }
+
+    public void setNbLignes(int nbLignes) {
+        this.nbLignes = nbLignes;
+    }
+
+    public void setNbColonnes(int nbColonnes) {
+        this.nbColonnes = nbColonnes;
+    }
+
+    public void setNbBombes(int nbBombes) {
+        this.nbBombes = nbBombes;
+    }
+    
     
     public void placerBombesAleatoirement(){
         Random random= new Random();
