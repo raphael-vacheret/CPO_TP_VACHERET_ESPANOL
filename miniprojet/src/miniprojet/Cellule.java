@@ -18,6 +18,11 @@ public class Cellule {
         return presenceBombe;
     }
 
+    public boolean isDevoilee() {
+        return devoilee;
+    }
+    
+
     public int getNbBombesAdjacentes() {
         return nbBombesAdjacentes;
     }

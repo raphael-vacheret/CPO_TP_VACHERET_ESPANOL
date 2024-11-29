@@ -4,7 +4,6 @@
  */
 package miniprojet;
 import java.util.Random;
-import miniprojet.Cellule;
 /**
  *
  * @author Administrateur
@@ -13,7 +12,7 @@ public class GrilleDeJeu {
     private int nbLignes;
     private int nbColonnes;
     private int nbBombes;
-    private Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
+    private final Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
 
     public int getNbLignes() {
         return nbLignes;
@@ -47,8 +46,8 @@ public class GrilleDeJeu {
                 if(matrice[i][j].isPresenceBombe()==false) {
                     for (int h=i-1;h<i+1;h++) {
                         for (int l=j-1;l<j+1;l++) {
-                            if (h>0) {
-                                if (l>0) {
+                            if (h>0 && h<nbLignes) {
+                                if (l>0 && l<nbColonnes) {
                                     if (matrice[i][j].isPresenceBombe()==true) {
                                         BombesAdjacentes++;
                                     }
@@ -71,10 +70,28 @@ public class GrilleDeJeu {
             if (matrice[ligne][colonne].getNbBombesAdjacentes()==0) {
                 for (int h=ligne-1;h<ligne+1;h++) {
                     for (int l=colonne-1;l<colonne+1;l++) {
-                        matrice[ligne][colonne].revelerCellule();                           
+                        if (l>0 && l<nbColonnes) {
+                            if (h>0 && h<nbLignes) {
+                                matrice[h][l].revelerCellule();                                
+                            }
+                        }
+                           
                     }
                 }                    
             }
         }
+    }
+    public boolean getPresenceBombe(int i, int j)  {
+        return matrice[i][j].isPresenceBombe()==true;
+    }
+    public boolean toutesCellulesRevelees() {
+        for (int i=0;i<nbColonnes;i++) {
+            for (int j=0;j<nbLignes;j++) {
+                if (matrice[i][j].isPresenceBombe()==false || matrice[i][j].isDevoilee()==false) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
