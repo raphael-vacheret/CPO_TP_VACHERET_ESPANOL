@@ -12,6 +12,7 @@ public class GrilleDeJeu {
     private int nbLignes;
     private int nbColonnes;
     private int nbBombes;
+    private int victoire=0;
     private final Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
 
     public int getNbLignes() {
@@ -25,6 +26,16 @@ public class GrilleDeJeu {
     public int getNbBombes() {
         return nbBombes;
     }
+
+    public void setVictoire(int victoire) {
+        this.victoire = victoire;
+    }
+
+    public int getVictoire() {
+        return victoire;
+    }
+    
+    
 
     public void setNbLignes(int nbLignes) {
         this.nbLignes = nbLignes;
@@ -77,7 +88,7 @@ public class GrilleDeJeu {
     public void revelerCellule(int ligne, int colonne) {
         matrice[ligne][colonne].revelerCellule();
         if(matrice[ligne][colonne].isPresenceBombe()==true) {
-            //fin de la partie
+            victoire=1;
         }
         else {
             if (matrice[ligne][colonne].getNbBombesAdjacentes()==0) {
@@ -105,6 +116,7 @@ public class GrilleDeJeu {
                 }
             }
         }
+        victoire=2;
         return true;
     }
 }

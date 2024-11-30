@@ -36,10 +36,12 @@ public class partie {
     public void tourDeJeu(int ligne, int colonne) {
         
     }
-    public void verifierVictoire() {
+    public boolean verifierVictoire() {
         if (grille.toutesCellulesRevelees()) {
             System.out.print("vous avez gagne bien joue");
+            return true;
         }
+        else return false;
         
     }
     public void demarrerPartie() {
