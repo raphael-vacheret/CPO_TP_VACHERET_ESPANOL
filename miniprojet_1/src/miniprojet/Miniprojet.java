@@ -9,7 +9,6 @@ public class Miniprojet {
         // Création et démarrage de la partie
         Partie partie = new Partie();
         partie.demarrerPartie();
-        partie.tourDeJeu(0, 0);
     }
 }
 
