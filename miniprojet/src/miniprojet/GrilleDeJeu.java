@@ -9,10 +9,20 @@ public class GrilleDeJeu {
     private int nbColonnes;
     private int nbBombes;
     private int victoire=0;
-    private final Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
+    private Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
 
-    GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {
+        this.nbLignes = nbLignes;
+        this.nbColonnes = nbColonnes;
+        this.nbBombes = nbBombes;
+        this.matrice = new Cellule[nbLignes][nbColonnes];
+        
+        // Initialisation des cellules
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                matrice[i][j] = new Cellule();
+            }
+        }
     }
 
     public int getNbLignes() {
