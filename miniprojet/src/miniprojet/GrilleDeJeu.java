@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package miniprojet;
 import java.util.Random;
 /**
@@ -14,6 +10,10 @@ public class GrilleDeJeu {
     private int nbBombes;
     private int victoire=0;
     private final Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
+
+    GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     public int getNbLignes() {
         return nbLignes;
