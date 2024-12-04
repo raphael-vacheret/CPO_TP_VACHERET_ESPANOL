@@ -19,9 +19,11 @@ public class CelluleGraphique extends JButton{
     int y;
     Cellule celluleassocié;
 
+    
     public CelluleGraphique(int x, int y) {
         this.x = x;
         this.y = y;
+        this.celluleassocié = celluleassocié;
     }
 
     @Override

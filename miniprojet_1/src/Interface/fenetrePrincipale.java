@@ -1,6 +1,8 @@
 package Interface;
 
 
+
+
 import Interface.CelluleGraphique;
 import java.awt.GridLayout;
 import java.util.Scanner;
