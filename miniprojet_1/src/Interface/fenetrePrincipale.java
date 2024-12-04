@@ -30,7 +30,7 @@ public class fenetrePrincipale extends javax.swing.JFrame {
     public fenetrePrincipale() {
         initComponents();
         int nbLignes = 8;
-        int nbColonnes = 10;
+        int nbColonnes =10;
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
