@@ -4,9 +4,11 @@ package Interface;
 
 
 import Interface.CelluleGraphique;
+import Interface.CelluleGraphique;
 import java.awt.GridLayout;
 import java.util.Scanner;
 import javax.swing.JButton;
+import miniprojet.GrilleDeJeu;
 import miniprojet.GrilleDeJeu;
 
 /*
