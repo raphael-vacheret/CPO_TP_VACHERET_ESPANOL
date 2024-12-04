@@ -7,11 +7,11 @@ package miniprojet;
 import java.util.Scanner;
 
 public class Partie {
-    private final Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
     private GrilleDeJeu grille;
 
     public void initialiserPartie(int n) {
-        int nbLignes = 0, nbColonnes = 0, nbBombes = 0;
+        int nbLignes=0, nbColonnes=0, nbBombes=0;
 
         if (n < 1 || n > 3) {
             System.out.println("Erreur : difficulté invalide !");
@@ -20,13 +20,13 @@ public class Partie {
 
         switch (n) {
             case 1 -> { // Facile
-                nbLignes = 8;
-                nbColonnes = 10;
+                nbLignes = 9;
+                nbColonnes = 9;
                 nbBombes = 10;
             }
             case 2 -> { // Moyenne
-                nbLignes = 14;
-                nbColonnes = 18;
+                nbLignes = 16;
+                nbColonnes = 16;
                 nbBombes = 40;
             }
             case 3 -> { // Difficile
@@ -93,7 +93,7 @@ public class Partie {
         System.out.println("3 : Difficile");
 
         int difficulte = sc.nextInt();
-        initialiserPartie(difficulte);
+        this.initialiserPartie(difficulte);
 
         if (grille == null) {
             System.out.println("La partie n'a pas pu être initialisée.");
@@ -106,7 +106,7 @@ public class Partie {
             int ligne = sc.nextInt();
             int colonne = sc.nextInt();
 
-            tourDeJeu(ligne, colonne);
+            this.tourDeJeu(ligne, colonne);
         }
 
         System.out.println("Merci d'avoir joué !");
