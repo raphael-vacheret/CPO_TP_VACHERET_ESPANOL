@@ -1,6 +1,15 @@
+package Interface;
 
+
+
+
+import Interface.CelluleGraphique;
+import Interface.CelluleGraphique;
 import java.awt.GridLayout;
+import java.util.Scanner;
 import javax.swing.JButton;
+import miniprojet.GrilleDeJeu;
+import miniprojet.GrilleDeJeu;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,6 +21,8 @@ import javax.swing.JButton;
  * @author bapti
  */
 public class fenetrePrincipale extends javax.swing.JFrame {
+    private final Scanner sc = new Scanner(System.in);
+    private GrilleDeJeu grille;
 
     /**
      * Creates new form fenetrePrincipale
@@ -19,7 +30,7 @@ public class fenetrePrincipale extends javax.swing.JFrame {
     public fenetrePrincipale() {
         initComponents();
         int nbLignes = 8;
-        int nbColonnes = 10;
+        int nbColonnes =10;
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
