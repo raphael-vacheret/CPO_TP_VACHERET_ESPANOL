@@ -67,7 +67,7 @@ public class GrilleDeJeu {
         for (int i=0;i<nbBombes;i++) {   
             int h= random.nextInt(nbColonnes);
             int l= random.nextInt(nbLignes);
-            if (matrice[h][l].isPresenceBombe()==true) {
+            if (matrice[h][l].isPresenceBombe()) {
                 i--;
             }
             else {
@@ -98,6 +98,10 @@ public class GrilleDeJeu {
         
     }
     public void revelerCellule(int ligne, int colonne) {
+        if (matrice[ligne][colonne].isDevoilee()) {
+            System.out.println("vous avez deja devoillee cette case veuillez en choisir une autre ");
+            return;
+        }
         matrice[ligne][colonne].revelerCellule();
         if(matrice[ligne][colonne].isPresenceBombe()==true) {
             victoire=1;
@@ -106,15 +110,17 @@ public class GrilleDeJeu {
             if (matrice[ligne][colonne].getNbBombesAdjacentes()==0) {
                 for (int h=ligne-1;h<ligne+1;h++) {
                     for (int l=colonne-1;l<colonne+1;l++) {
-                        if (l>0 && l<nbColonnes) {
-                            if (h>0 && h<nbLignes) {
-                                matrice[h][l].revelerCellule();                                
+                        if (l>=0 && l<nbColonnes) {
+                            if (h>=0 && h<nbLignes) {
+                                this.revelerCellule(h,l);
+                                
                             }
                         }
                            
                     }
-                }                    
+                } 
             }
+            
         }
     }
     public boolean getPresenceBombe(int i, int j)  {
@@ -131,4 +137,18 @@ public class GrilleDeJeu {
         victoire=2;
         return true;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < matrice.length; i++) {
+            for (int j = 0; j < matrice[i].length; j++) {
+                sb.append(matrice[i][j].toString()).append(" ");
+           }
+            sb.append("\n"); // Nouvelle ligne après chaque ligne de la matrice
+        }
+        return sb.toString();
+    }
+
+    
 }

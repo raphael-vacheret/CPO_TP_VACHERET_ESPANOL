@@ -39,16 +39,22 @@ public class Cellule {
 
     @Override
     public String toString() {
-        String texte="";
-        if(devoilee=false) texte="?";
-        else {
-            if (presenceBombe=true) texte="B";
-            else {
-                if (nbBombesAdjacentes==0) texte=" ";
-                else texte=""+nbBombesAdjacentes+"";
+        String texte = "";
+        if (!devoilee) { // Vérifie si la cellule n'est pas dévoilée
+            texte = "?";
+        } else {
+            if (presenceBombe) { // Vérifie la présence d'une bombe
+                texte = "B";
+            } else {
+                if (nbBombesAdjacentes == 0) {
+                    texte =" ";
+                }
+                else texte =""+nbBombesAdjacentes+"";
+               
             }
-        }
-        return texte ;
     }
+    return texte;
+}
+
     
 }
