@@ -1,28 +1,33 @@
-package miniprojet;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Interface;
+
 import java.util.Random;
 import miniprojet.Cellule;
-import Interface.CelluleGraphique;
+
 /**
  *
- * @author Administrateur
+ * @author bapti
  */
-public class GrilleDeJeu {
+public class GrilleGraphique {
     private int nbLignes;
     private int nbColonnes;
     private int nbBombes;
     private int victoire=0;
-    private Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
+    private CelluleGraphique[][] matrice = new CelluleGraphique[nbLignes][nbColonnes];
 
-    GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {
+    GrilleGraphique(int nbLignes, int nbColonnes, int nbBombes) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
         this.nbBombes = nbBombes;
-        this.matrice = new Cellule[nbLignes][nbColonnes];
+        this.matrice = new CelluleGraphique[nbLignes][nbColonnes];
         
         // Initialisation des cellules
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                matrice[i][j] = new Cellule();
+                matrice[i][j] = new CelluleGraphique();
             }
         }
     }

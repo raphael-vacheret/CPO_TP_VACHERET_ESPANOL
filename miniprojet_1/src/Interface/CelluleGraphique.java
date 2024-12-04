@@ -14,7 +14,7 @@ import miniprojet.Cellule;
  *
  * @author bapti
  */
-public class CelluleGraphique extends JButton{
+public class CelluleGraphique extends JButton {
     int x;
     int y;
     Cellule celluleassocié;
@@ -32,5 +32,45 @@ public class CelluleGraphique extends JButton{
         setText("?");
     }
     
+    private boolean presenceBombe;
+    private boolean devoilee;
+    private int nbBombesAdjacentes;
+
+    public boolean isPresenceBombe() {
+        return presenceBombe;
+    }
+
+    public boolean isDevoilee() {
+        return devoilee;
+    }
+    
+
+    public int getNbBombesAdjacentes() {
+        return nbBombesAdjacentes;
+    }
+    public void placerBombe() {
+        presenceBombe=true;
+    }
+    public void revelerCellule() {
+        devoilee=true;
+    }
+
+    public void setNbBombesAdjacentes(int nbBombesAdjacentes) {
+        this.nbBombesAdjacentes = nbBombesAdjacentes;
+    }
+
+    @Override
+    public String toString() {
+        String texte="";
+        if(devoilee=false) texte="?";
+        else {
+            if (presenceBombe=true) texte="B";
+            else {
+                if (nbBombesAdjacentes==0) texte=" ";
+                else texte=""+nbBombesAdjacentes+"";
+            }
+        }
+        return texte ;
+    }
     
 }
