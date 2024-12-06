@@ -9,6 +9,7 @@ public class GrilleDeJeu {
     private int nbColonnes;
     private int nbBombes;
     private int victoire=0;
+    
     private Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
 
     GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {
@@ -44,6 +45,8 @@ public class GrilleDeJeu {
     public int getVictoire() {
         return victoire;
     }
+
+    
     
     
 
@@ -74,9 +77,10 @@ public class GrilleDeJeu {
         }
     }
     public void calculerBombesAdjacentes() {
-        int BombesAdjacentes=0;
+        
         for (int i=0;i<nbColonnes;i++) {
             for (int j=0;j<nbLignes;j++) {
+                int BombesAdjacentes=0;
                 if(matrice[i][j].isPresenceBombe()==false) {
                     for (int h=i-1;h<i+1;h++) {
                         for (int l=j-1;l<j+1;l++) {
@@ -96,11 +100,11 @@ public class GrilleDeJeu {
         
     }
     public void revelerCellule(int ligne, int colonne) {
-        if (matrice[ligne][colonne].isDevoilee()) {
-            System.out.println("vous avez deja devoillee cette case veuillez en choisir une autre ");
+        if (matrice[ligne][colonne].isDevoilee()){           
             return;
+        
         }
-        matrice[ligne][colonne].revelerCellule();
+        matrice[ligne][colonne].RevelerCellule();
         if(matrice[ligne][colonne].isPresenceBombe()==true) {
             victoire=1;
         }
@@ -110,8 +114,7 @@ public class GrilleDeJeu {
                     for (int l=colonne-1;l<colonne+1;l++) {
                         if (l>=0 && l<nbColonnes) {
                             if (h>=0 && h<nbLignes) {
-                                this.revelerCellule(h,l);
-                                
+                                this.revelerCellule(h, l);                                
                             }
                         }
                            
@@ -139,10 +142,10 @@ public class GrilleDeJeu {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < matrice.length; i++) {
-            for (int j = 0; j < matrice[i].length; j++) {
-                sb.append(matrice[i][j].toString()).append(" ");
-           }
+        for (Cellule[] matrice1 : matrice) {
+            for (Cellule matrice11 : matrice1) {
+                sb.append(matrice11.toString()).append(" ");
+            }
             sb.append("\n"); // Nouvelle ligne après chaque ligne de la matrice
         }
         return sb.toString();
