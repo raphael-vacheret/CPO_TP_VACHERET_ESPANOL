@@ -13,6 +13,7 @@ public class Cellule {
     private boolean presenceBombe;
     private boolean devoilee;
     private int nbBombesAdjacentes;
+    private int revellee;
 
     public boolean isPresenceBombe() {
         return presenceBombe;
@@ -20,6 +21,18 @@ public class Cellule {
 
     public boolean isDevoilee() {
         return devoilee;
+    }
+
+    public void setDevoilee(boolean devoilee) {
+        this.devoilee = devoilee;
+    }
+
+    public int getRevellee() {
+        return revellee;
+    }
+
+    public void setRevellee(int revellee) {
+        this.revellee = revellee;
     }
     
 
@@ -29,7 +42,7 @@ public class Cellule {
     public void placerBombe() {
         presenceBombe=true;
     }
-    public void revelerCellule() {
+    public void RevelerCellule() {
         devoilee=true;
     }
 
@@ -39,21 +52,21 @@ public class Cellule {
 
     @Override
     public String toString() {
-        String texte = "";
+        
         if (!devoilee) { // Vérifie si la cellule n'est pas dévoilée
-            texte = "?";
+            return "?";
         } else {
             if (presenceBombe) { // Vérifie la présence d'une bombe
-                texte = "B";
+                return "B";
             } else {
-                if (nbBombesAdjacentes == 0) {
-                    texte =" ";
+                if (this.nbBombesAdjacentes >0) {
+                    return String.valueOf(this.nbBombesAdjacentes);
                 }
-                else texte =""+nbBombesAdjacentes+"";
+                else return " ";
                
             }
     }
-    return texte;
+    
 }
 
     
