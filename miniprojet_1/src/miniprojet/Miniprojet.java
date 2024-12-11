@@ -12,3 +12,7 @@ public class Miniprojet {
     }
 }
 
+// rajouté des vie                                                              3
+// rajouté un nouveau mode de difficulté/nouvelle grille                        2
+// crée des incertitudes                                                        4
+// crée des references (x/y) pour savoir ou il plus facilement ou l'on clique   1
