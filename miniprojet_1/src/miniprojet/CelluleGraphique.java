@@ -1,4 +1,4 @@
-package Interface;
+package miniprojet;
 
 
 import java.awt.Graphics;
@@ -20,7 +20,7 @@ public class CelluleGraphique extends JButton {
     Cellule celluleassocié;
 
     
-    public CelluleGraphique(int x, int y) {
+    public CelluleGraphique(int x, int y, Cellule celluleassocié) {
         this.x = x;
         this.y = y;
         this.celluleassocié = celluleassocié;
@@ -29,7 +29,7 @@ public class CelluleGraphique extends JButton {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-        setText("?");
+        this.setText("?");
     }
     
     private boolean presenceBombe;
