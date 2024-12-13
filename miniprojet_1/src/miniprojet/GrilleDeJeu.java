@@ -91,8 +91,8 @@ public class GrilleDeJeu {
                 if(matrice[i][j].isPresenceBombe()==false) {
                     for (int h=i-1;h<=i+1;h++) {
                         for (int l=j-1;l<=j+1;l++) {
-                            if (h>0 && h<nbLignes) {
-                                if (l>0 && l<nbColonnes) {
+                            if (h>=0 && h<nbLignes) {
+                                if (l>=0 && l<nbColonnes) {
                                     if (matrice[h][l].isPresenceBombe()==true) {
                                         BombesAdjacentes++;
                                     }

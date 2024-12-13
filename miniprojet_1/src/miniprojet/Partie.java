@@ -15,7 +15,7 @@ public class Partie {
         int nbVie = 1;
 
         if (n < 1 || n > 3) {
-            System.out.println("Erreur : difficulté invalide !");
+            System.out.println("Erreur : difficulte invalide !");
             return;
         }
         
@@ -46,7 +46,8 @@ public class Partie {
         this.grille.placerBombesAleatoirement();
         this.grille.calculerBombesAdjacentes();
 
-        System.out.println("Grille initialisée avec succès !");
+
+        System.out.println("Grille initialisee avec succès !");
     }
 
     public GrilleDeJeu getGrille() {
@@ -56,12 +57,12 @@ public class Partie {
 
     public void tourDeJeu(int ligne, int colonne) {
         if (grille == null) {
-            System.out.println("La partie n'a pas été initialisée. Veuillez choisir une difficulté.");
+            System.out.println("La partie n'a pas ete initialisee. Veuillez choisir une difficulte.");
             return;
         }
 
         if (ligne < 0 || ligne >= grille.getNbLignes() || colonne < 0 || colonne >= grille.getNbColonnes()) {
-            System.out.println("Coordonnées invalides, veuillez réessayer.");
+            System.out.println("Coordonnees invalides, veuillez reessayer.");
             return;
         }
 
@@ -72,7 +73,7 @@ public class Partie {
             System.out.println("BOOM ! Vous perdez une vie.");
             grille.setVictoire(1); // Marque la partie comme perdue
         } else if (grille.toutesCellulesRevelees()) {
-            System.out.println("Félicitations, vous avez gagné !");
+            System.out.println("Felicitations, vous avez gagne !");
             grille.setVictoire(2); // Marque la partie comme gagnée
         }
     }
@@ -80,12 +81,12 @@ public class Partie {
     public boolean verifierVictoire() {
         
         if (grille.getVictoire() == 2) { // Partie gagnée
-            System.out.println("Vous avez déjà gagné !");
+            System.out.println("Vous avez dejà gagne !");
             return true;
         }
 
         if (grille.getNbVie()==0) { // Partie perdue
-            System.out.println("Vous avez déjà perdu !");
+            System.out.println("Vous avez dejà perdu !");
             return true;
         }
 
@@ -93,8 +94,8 @@ public class Partie {
     }
 
     public void demarrerPartie() {
-        System.out.println("Bonjour, bienvenue sur le super démineur !");
-        System.out.println("Quelle difficulté voulez-vous choisir ?");
+        System.out.println("Bonjour, bienvenue sur le super demineur !");
+        System.out.println("Quelle difficulte voulez-vous choisir ?");
         System.out.println("1 : Facile");
         System.out.println("2 : Moyenne");
         System.out.println("3 : Difficile");
@@ -103,20 +104,20 @@ public class Partie {
         this.initialiserPartie(difficulte);
 
         if (grille == null) {
-            System.out.println("La partie n'a pas pu être initialisée.");
+            System.out.println("La partie n'a pas pu être initialisee.");
             return;
         }
 
         while (!verifierVictoire()) {
             System.out.println(grille); // Affiche la grille actuelle
-            System.out.println("Veuillez entrer une case à dévoiler (ligne puis colonne) :");
+            System.out.println("Veuillez entrer une case à devoiler (ligne puis colonne) :");
             int ligne = sc.nextInt();
             int colonne = sc.nextInt();
 
             this.tourDeJeu(ligne, colonne);
         }
 
-        System.out.println("Merci d'avoir joué !");
+        System.out.println("Merci d'avoir joue !");
                    System.out.println(grille);
     }
 }
