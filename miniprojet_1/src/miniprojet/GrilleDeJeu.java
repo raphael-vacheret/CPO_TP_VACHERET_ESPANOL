@@ -69,25 +69,25 @@ public class GrilleDeJeu {
         for (int i=0;i<nbBombes;i++) {   
             int h= random.nextInt(nbColonnes);
             int l= random.nextInt(nbLignes);
-            if (matrice[h][l].isPresenceBombe()) {
+            if (matrice[l][h].isPresenceBombe()) {
                 i--;
             }
             else {
-                matrice[h][l].placerBombe();
+                matrice[l][h].placerBombe();
             }
         }
     }
     public void calculerBombesAdjacentes() {
         
-        for (int i=0;i<nbColonnes;i++) {
-            for (int j=0;j<nbLignes;j++) {
+        for (int i=0;i<nbLignes;i++) {
+            for (int j=0;j<nbColonnes;j++) {
                 int BombesAdjacentes=0;
                 if(matrice[i][j].isPresenceBombe()==false) {
-                    for (int h=i-1;h<i+1;h++) {
-                        for (int l=j-1;l<j+1;l++) {
+                    for (int h=i-1;h<=i+1;h++) {
+                        for (int l=j-1;l<=j+1;l++) {
                             if (h>0 && h<nbLignes) {
                                 if (l>0 && l<nbColonnes) {
-                                    if (matrice[i][j].isPresenceBombe()==true) {
+                                    if (matrice[h][l].isPresenceBombe()==true) {
                                         BombesAdjacentes++;
                                     }
                                 }
@@ -111,8 +111,8 @@ public class GrilleDeJeu {
         }
         else {
             if (matrice[ligne][colonne].getNbBombesAdjacentes()==0) {
-                for (int h=ligne-1;h<ligne+1;h++) {
-                    for (int l=colonne-1;l<colonne+1;l++) {
+                for (int h=ligne-1;h<=ligne+1;h++) {
+                    for (int l=colonne-1;l<=colonne+1;l++) {
                         if (l>=0 && l<nbColonnes) {
                             if (h>=0 && h<nbLignes) {
                                 this.revelerCellule(h, l);                                
@@ -129,8 +129,8 @@ public class GrilleDeJeu {
         return matrice[i][j].isPresenceBombe()==true;
     }
     public boolean toutesCellulesRevelees() {
-        for (int i=0;i<nbColonnes;i++) {
-            for (int j=0;j<nbLignes;j++) {
+        for (int i=0;i<nbLignes;i++) {
+            for (int j=0;j<nbColonnes;j++) {
                 if (matrice[i][j].isPresenceBombe()==false || matrice[i][j].isDevoilee()==false) {
                     return false;
                 }

@@ -7,7 +7,7 @@ package miniprojet;
 import java.util.Scanner;
 
 public class Partie {
-    private Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
     private GrilleDeJeu grille;
 
     public void initialiserPartie(int n) {
@@ -74,10 +74,7 @@ public class Partie {
     }
 
     public boolean verifierVictoire() {
-        if (grille == null) {
-            return false;
-        }
-
+        
         if (grille.getVictoire() == 2) { // Partie gagnée
             System.out.println("Vous avez déjà gagné !");
             return true;
@@ -116,6 +113,7 @@ public class Partie {
         }
 
         System.out.println("Merci d'avoir joué !");
+                   System.out.println(grille);
     }
 }
 
