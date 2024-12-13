@@ -17,6 +17,7 @@ public class Partie {
             System.out.println("Erreur : difficulté invalide !");
             return;
         }
+        
 
         switch (n) {
             case 1 -> { // Facile
@@ -43,6 +44,11 @@ public class Partie {
 
         System.out.println("Grille initialisée avec succès !");
     }
+
+    public GrilleDeJeu getGrille() {
+        return grille;
+    }
+    
 
     public void tourDeJeu(int ligne, int colonne) {
         if (grille == null) {

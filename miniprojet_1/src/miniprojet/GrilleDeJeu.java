@@ -1,7 +1,6 @@
 package miniprojet;
 import java.util.Random;
 import miniprojet.Cellule;
-import Interface.CelluleGraphique;
 /**
  *
  * @author Administrateur
@@ -12,7 +11,7 @@ public class GrilleDeJeu {
     private int nbBombes;
     private int victoire=0;
     
-    private Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
+    public Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
 
     GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {
         this.nbLignes = nbLignes;

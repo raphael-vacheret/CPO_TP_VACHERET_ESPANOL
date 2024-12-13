@@ -1,14 +1,11 @@
-package Interface;
+package miniprojet;
 
 
 
 
-import Interface.CelluleGraphique;
-import Interface.CelluleGraphique;
 import java.awt.GridLayout;
 import java.util.Scanner;
 import javax.swing.JButton;
-import miniprojet.GrilleDeJeu;
 import miniprojet.GrilleDeJeu;
 
 /*
@@ -31,15 +28,22 @@ public class fenetrePrincipale extends javax.swing.JFrame {
         initComponents();
         int nbLignes = 8;
         int nbColonnes =10;
+        int nbBombes= 10;
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
+        
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
-                CelluleGraphique bouton_cellule = new CelluleGraphique(i,j); // création d'un bouton
+                CelluleGraphique bouton_cellule = new CelluleGraphique(i,j,grille.matrice[i][j]); // création d'un bouton
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
- }
-}
-
+            }
+        }
     }
+    public void initialiserPartie() {
+        grille.placerBombesAleatoirement();
+        
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
