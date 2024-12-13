@@ -31,16 +31,33 @@ public class fenetrePrincipale extends javax.swing.JFrame {
         int nbBombes= 10;
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
         
+        initialiserPartie();
+        
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
+                    final int l = i;
+                    final int k = j;
                 CelluleGraphique bouton_cellule = new CelluleGraphique(i,j,grille.matrice[i][j]); // création d'un bouton
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+                bouton_cellule.addActionListener(evt -> {
+                   
+                    grille.revelerCellule(l,k);
+                if (bouton_cellule.celluleassocié.isPresenceBombe()) {
+                    System.out.println("Bombe ! Partie terminée.");
+                } else {
+                    System.out.println("Cellule sûre : " + bouton_cellule.celluleassocié.getNbBombesAdjacentes() + " bombes adjacentes.");
+                }
+                });
             }
         }
+        PanneauGrille.revalidate();
+        PanneauGrille.repaint();
     }
     public void initialiserPartie() {
         grille.placerBombesAleatoirement();
+        grille.calculerBombesAdjacentes();
+        
         
     }
 
@@ -106,10 +123,8 @@ public class fenetrePrincipale extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new fenetrePrincipale().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new fenetrePrincipale().setVisible(true);
         });
     }
 
@@ -117,3 +132,9 @@ public class fenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauGrille;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+
+
+
