@@ -11,7 +11,8 @@ public class Partie {
     private GrilleDeJeu grille;
 
     public void initialiserPartie(int n) {
-        int nbLignes=0, nbColonnes=0, nbBombes=0;
+        int nbLignes=0, nbColonnes=0, nbBombes=0; 
+        int nbVie = 1;
 
         if (n < 1 || n > 3) {
             System.out.println("Erreur : difficulté invalide !");
@@ -23,21 +24,24 @@ public class Partie {
                 nbLignes = 9;
                 nbColonnes = 9;
                 nbBombes = 10;
+                nbVie = 3;
             }
             case 2 -> { // Moyenne
                 nbLignes = 16;
                 nbColonnes = 16;
                 nbBombes = 40;
+                nbVie = 2;
             }
             case 3 -> { // Difficile
                 nbLignes = 20;
                 nbColonnes = 20;
                 nbBombes = 99;
+                nbVie = 1;
             }
         }
 
         // Initialisation de la grille avec les paramètres
-        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes, nbVie);
         this.grille.placerBombesAleatoirement();
         this.grille.calculerBombesAdjacentes();
 
@@ -59,7 +63,7 @@ public class Partie {
 
         // Vérification si une bombe a été révélée
         if (grille.getPresenceBombe(ligne, colonne)) {
-            System.out.println("BOOM ! Vous avez perdu.");
+            System.out.println("BOOM ! Vous perdez une vie.");
             grille.setVictoire(1); // Marque la partie comme perdue
         } else if (grille.toutesCellulesRevelees()) {
             System.out.println("Félicitations, vous avez gagné !");
@@ -74,7 +78,7 @@ public class Partie {
             return true;
         }
 
-        if (grille.getVictoire() == 1) { // Partie perdue
+        if (grille.getNbVie()==0) { // Partie perdue
             System.out.println("Vous avez déjà perdu !");
             return true;
         }

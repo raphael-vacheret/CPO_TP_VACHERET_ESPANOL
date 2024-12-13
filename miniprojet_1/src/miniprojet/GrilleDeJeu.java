@@ -11,13 +11,15 @@ public class GrilleDeJeu {
     private int nbColonnes;
     private int nbBombes;
     private int victoire=0;
+    private int nbVie;
     
     private Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
 
-    GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {
+    GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes,int nbVie) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
         this.nbBombes = nbBombes;
+        this.nbVie = nbVie;
         this.matrice = new Cellule[nbLignes][nbColonnes];
         
         // Initialisation des cellules
@@ -48,6 +50,10 @@ public class GrilleDeJeu {
         return victoire;
     }
 
+    public int getNbVie() {
+        return nbVie;
+    }
+    
     
     
     
@@ -108,7 +114,8 @@ public class GrilleDeJeu {
         }
         matrice[ligne][colonne].RevelerCellule();
         if(matrice[ligne][colonne].isPresenceBombe()==true) {
-            victoire=1;
+            //victoire=1;
+            nbVie=nbVie-1;
         }
         else {
             if (matrice[ligne][colonne].getNbBombesAdjacentes()==0) {
