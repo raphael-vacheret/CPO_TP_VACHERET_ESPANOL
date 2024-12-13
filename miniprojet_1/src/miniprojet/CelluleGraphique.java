@@ -30,6 +30,7 @@ public class CelluleGraphique extends JButton {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
         this.setText("?");
+        /*PROBLEME ICI */
     }
     
     private boolean presenceBombe;

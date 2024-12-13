@@ -29,7 +29,8 @@ public class fenetrePrincipale extends javax.swing.JFrame {
         int nbLignes = 8;
         int nbColonnes =10;
         int nbBombes= 10;
-        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
+        int nbVie=3;
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes, nbVie);
         
         initialiserPartie();
         
