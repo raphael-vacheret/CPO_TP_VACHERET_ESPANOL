@@ -2,7 +2,8 @@ package miniprojet;
 
 
 
-
+import miniprojet.CelluleGraphique;
+import miniprojet.Cellule;
 import java.awt.GridLayout;
 import java.util.Scanner;
 import javax.swing.JButton;
@@ -28,6 +29,7 @@ public class fenetrePrincipale extends javax.swing.JFrame {
         initComponents();
         int nbLignes = 8;
         int nbColonnes =10;
+        
         int nbBombes= 10;
         int nbVie=3;
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes, nbVie);
@@ -41,13 +43,23 @@ public class fenetrePrincipale extends javax.swing.JFrame {
                     final int k = j;
                 CelluleGraphique bouton_cellule = new CelluleGraphique(i,j,grille.matrice[i][j]); // création d'un bouton
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+                
+                
                 bouton_cellule.addActionListener(evt -> {
                    
                     grille.revelerCellule(l,k);
-                if (bouton_cellule.celluleassocié.isPresenceBombe()) {
-                    System.out.println("Bombe ! Partie terminée.");
-                } else {
-                    System.out.println("Cellule sûre : " + bouton_cellule.celluleassocié.getNbBombesAdjacentes() + " bombes adjacentes.");
+                    bouton_cellule.repaint();
+                    
+                    if (bouton_cellule.celluleassocié.isPresenceBombe()) {
+                        System.out.println("Bombe ! Partie terminée.");
+                    } else {
+                        System.out.println("Cellule sûre : " + bouton_cellule.celluleassocié.getNbBombesAdjacentes() + " bombes adjacentes.");
+                    }
+                // Vérifie si la partie est terminée ou si la victoire est atteinte
+                if (grille.getNbVie() <= 0) {
+                    System.out.println("Game Over!");
+                } else if (grille.toutesCellulesRevelees()) {
+                    System.out.println("Victoire!");
                 }
                 });
             }
@@ -61,8 +73,7 @@ public class fenetrePrincipale extends javax.swing.JFrame {
         
         
     }
-
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

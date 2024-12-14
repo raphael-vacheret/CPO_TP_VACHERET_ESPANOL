@@ -1,3 +1,4 @@
+package miniprojet;
 import java.awt.Graphics;
 import javax.swing.JButton;
 import miniprojet.Cellule;
@@ -23,13 +24,13 @@ public class CelluleGraphique extends JButton {
         this.celluleassocié = celluleassocié;
     }
 
-    @Override
+    /*@Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
         this.setText("?");
-        /*PROBLEME ICI */
+        /*PROBLEME ICI 
     }
-    
+    */
     private boolean presenceBombe;
     private boolean devoilee;
     private int nbBombesAdjacentes;
@@ -58,18 +59,20 @@ public class CelluleGraphique extends JButton {
     }
 
     @Override
-    public String toString() {
-        String texte="";
-        if(devoilee=false) texte="?";
-        else {
-            if (presenceBombe=true) texte="B";
-            else {
-                if (nbBombesAdjacentes==0) texte=" ";
-                else texte=""+nbBombesAdjacentes+"";
-            }
-        }
-        return texte ;
+protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+
+    // Mise à jour du texte en fonction de l'état de la cellule
+    if (!celluleassocié.isDevoilee()) {
+        this.setText("?"); // Cellule non dévoilée
+    } else if (celluleassocié.isPresenceBombe()) {
+        this.setText("B"); // Bombe
+    } else {
+        int nbBombesAdjacentes = celluleassocié.getNbBombesAdjacentes();
+        this.setText(nbBombesAdjacentes == 0 ? "" : String.valueOf(nbBombesAdjacentes));
     }
-    
 }
+}
+    
+
 

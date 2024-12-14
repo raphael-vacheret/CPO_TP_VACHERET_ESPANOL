@@ -1,5 +1,6 @@
 package miniprojet;
 import java.util.Random;
+import javax.swing.JPanel;
 import miniprojet.Cellule;
 /**
  *
@@ -11,7 +12,7 @@ public class GrilleDeJeu {
     private int nbBombes;
     private int victoire=0;
     private int nbVie;
-    
+   
     public Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
 
     GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes,int nbVie) {
@@ -19,6 +20,7 @@ public class GrilleDeJeu {
         this.nbColonnes = nbColonnes;
         this.nbBombes = nbBombes;
         this.nbVie = nbVie;
+        
         this.matrice = new Cellule[nbLignes][nbColonnes];
         
         // Initialisation des cellules
@@ -112,6 +114,9 @@ public class GrilleDeJeu {
         
         }
         matrice[ligne][colonne].RevelerCellule();
+        
+        
+        
         if(matrice[ligne][colonne].isPresenceBombe()==true) {
             //victoire=1;
             nbVie=nbVie-1;
@@ -120,8 +125,8 @@ public class GrilleDeJeu {
             if (matrice[ligne][colonne].getNbBombesAdjacentes()==0) {
                 for (int h=ligne-1;h<=ligne+1;h++) {
                     for (int l=colonne-1;l<=colonne+1;l++) {
-                        if (l>=0 && l<nbColonnes) {
-                            if (h>=0 && h<nbLignes) {
+                        if (h>=0 && h<nbLignes && l>=0 && l<nbColonnes) {
+                            if (!matrice[h][l].isDevoilee()){
                                 this.revelerCellule(h, l);                                
                             }
                         }

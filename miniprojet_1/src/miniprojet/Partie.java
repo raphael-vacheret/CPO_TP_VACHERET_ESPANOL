@@ -41,7 +41,8 @@ public class Partie {
             }
         }
 
-        // Initialisation de la grille avec les paramètres
+     
+   // Initialisation de la grille avec les paramètres
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes, nbVie);
         this.grille.placerBombesAleatoirement();
         this.grille.calculerBombesAdjacentes();
