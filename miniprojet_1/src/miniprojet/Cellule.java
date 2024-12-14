@@ -11,7 +11,7 @@ package miniprojet;
  */
 public class Cellule {
     private boolean presenceBombe;
-    private boolean devoilee;
+    public boolean devoilee;
     private int nbBombesAdjacentes;
     private int revellee;
 

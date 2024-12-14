@@ -1,6 +1,3 @@
-package miniprojet;
-
-
 import java.awt.Graphics;
 import javax.swing.JButton;
 import miniprojet.Cellule;
@@ -75,3 +72,4 @@ public class CelluleGraphique extends JButton {
     }
     
 }
+
