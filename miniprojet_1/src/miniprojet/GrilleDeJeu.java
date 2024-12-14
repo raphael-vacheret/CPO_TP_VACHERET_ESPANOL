@@ -2,6 +2,7 @@ package miniprojet;
 import java.util.Random;
 import javax.swing.JPanel;
 import miniprojet.Cellule;
+import miniprojet.fenetrePrincipale;
 /**
  *
  * @author Administrateur
@@ -115,13 +116,14 @@ public class GrilleDeJeu {
         }
         matrice[ligne][colonne].RevelerCellule();
         
-        
+        /*CelluleGraphique bouton_cellule = (CelluleGraphique) PanneauGrille.getComponentAt(colonne* bouton_cellule.getWidth(), ligne*bouton_cellule.getHeight());
+        bouton_cellule.repaint();*/
         
         if(matrice[ligne][colonne].isPresenceBombe()==true) {
             //victoire=1;
             nbVie=nbVie-1;
         }
-        else {
+        
             if (matrice[ligne][colonne].getNbBombesAdjacentes()==0) {
                 for (int h=ligne-1;h<=ligne+1;h++) {
                     for (int l=colonne-1;l<=colonne+1;l++) {
@@ -135,7 +137,7 @@ public class GrilleDeJeu {
                 } 
             }
             
-        }
+        
     }
     public boolean getPresenceBombe(int i, int j)  {
         return matrice[i][j].isPresenceBombe()==true;
