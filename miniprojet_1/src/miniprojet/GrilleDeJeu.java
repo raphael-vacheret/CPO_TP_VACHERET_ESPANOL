@@ -75,7 +75,7 @@ public class GrilleDeJeu {
     
     public void placerBombesAleatoirement(){
         Random random= new Random();
-        for (int i=0;i<nbBombes;i++) {   
+        for (int i=0;i<nbBombes;i++) {  
             int h= random.nextInt(nbColonnes);
             int l= random.nextInt(nbLignes);
             if (matrice[l][h].isPresenceBombe()) {
@@ -92,14 +92,13 @@ public class GrilleDeJeu {
             for (int j=0;j<nbColonnes;j++) {
                 int BombesAdjacentes=0;
                 if(matrice[i][j].isPresenceBombe()==false) {
-                    for (int h=i-1;h<=i+1;h++) {
+                    for (int h=i-1;h<=1+i;h++) {
                         for (int l=j-1;l<=j+1;l++) {
-                            if (h>=0 && h<nbLignes) {
-                                if (l>=0 && l<nbColonnes) {
+                            if (h>=0 && h<nbLignes && l>=0 && l<nbColonnes) {
                                     if (matrice[h][l].isPresenceBombe()==true) {
                                         BombesAdjacentes++;
                                     }
-                                }
+                                
                             }
                         }
                     }    
@@ -129,7 +128,7 @@ public class GrilleDeJeu {
                     for (int l=colonne-1;l<=colonne+1;l++) {
                         if (h>=0 && h<nbLignes && l>=0 && l<nbColonnes) {
                             if (!matrice[h][l].isDevoilee()){
-                                this.revelerCellule(h, l);                                
+                                revelerCellule(h, l);                                
                             }
                         }
                            
