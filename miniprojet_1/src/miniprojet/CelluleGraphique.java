@@ -31,9 +31,9 @@ public class CelluleGraphique extends JButton {
         /*PROBLEME ICI 
     }
     */
-    private boolean presenceBombe;
-    private boolean devoilee;
-    private int nbBombesAdjacentes;
+    public boolean presenceBombe;
+    public boolean devoilee;
+    public int nbBombesAdjacentes;
 
     public boolean isPresenceBombe() {
         return presenceBombe;
@@ -64,7 +64,7 @@ protected void paintComponent(Graphics g) {
 
     // Mise à jour du texte en fonction de l'état de la cellule
     if (!celluleassocié.isDevoilee()) {
-        this.setText("?"); // Cellule non dévoilée
+        this.setText("..."); // Cellule non dévoilée
     } else if (celluleassocié.isPresenceBombe()) {
         this.setText("B"); // Bombe
     } else {

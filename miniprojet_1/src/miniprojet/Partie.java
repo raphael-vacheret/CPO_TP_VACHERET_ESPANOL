@@ -67,21 +67,21 @@ public class Partie {
             return;
         }
 
-        grille.revelerCellule(ligne, colonne);
+        grille.revelCellule(ligne, colonne);
 
         // Vérification si une bombe a été révélée
         if (grille.getPresenceBombe(ligne, colonne)) {
             System.out.println("BOOM ! Vous perdez une vie.");
-            grille.setVictoire(1); // Marque la partie comme perdue
+            grille.setVictoire(false); // Marque la partie comme perdue
         } else if (grille.toutesCellulesRevelees()) {
             System.out.println("Felicitations, vous avez gagne !");
-            grille.setVictoire(2); // Marque la partie comme gagnée
+            grille.setVictoire(true); // Marque la partie comme gagnée
         }
     }
 
     public boolean verifierVictoire() {
         
-        if (grille.getVictoire() == 2) { // Partie gagnée
+        if (grille.getVictoire() == true) { // Partie gagnée
             System.out.println("Vous avez dejà gagne !");
             return true;
         }

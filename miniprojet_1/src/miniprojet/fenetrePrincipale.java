@@ -47,7 +47,7 @@ public class fenetrePrincipale extends javax.swing.JFrame {
                 
                     bouton_cellule.addActionListener(evt -> {
                    
-                        grille.revelerCellule(l,k);
+                        grille.revelCellule(l,k);
                         bouton_cellule.repaint();
                     
                         if (bouton_cellule.celluleassocié.isPresenceBombe()) {
@@ -62,11 +62,11 @@ public class fenetrePrincipale extends javax.swing.JFrame {
                         } else if (grille.toutesCellulesRevelees()) {
                             System.out.println("Victoire!");
                         }
-                });
+                    });
+                }
             }
-        }
-        PanneauGrille.revalidate();
-        PanneauGrille.repaint();
+            PanneauGrille.revalidate();
+            PanneauGrille.repaint();
     }
     public void initialiserPartie() {
         grille.placerBombesAleatoirement();

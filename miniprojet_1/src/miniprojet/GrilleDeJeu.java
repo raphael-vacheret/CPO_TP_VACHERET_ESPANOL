@@ -11,10 +11,10 @@ public class GrilleDeJeu {
     private int nbLignes;
     private int nbColonnes;
     private int nbBombes;
-    private int victoire=0;
+    private boolean victoire;
     private int nbVie;
    
-    public Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
+    public Cellule[][] matrice /*= new Cellule[nbLignes][nbColonnes]*/;
 
     GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes,int nbVie) {
         this.nbLignes = nbLignes;
@@ -44,11 +44,11 @@ public class GrilleDeJeu {
         return nbBombes;
     }
 
-    public void setVictoire(int victoire) {
+    public void setVictoire(boolean victoire) {
         this.victoire = victoire;
     }
 
-    public int getVictoire() {
+    public boolean getVictoire() {
         return victoire;
     }
 
@@ -76,13 +76,13 @@ public class GrilleDeJeu {
     public void placerBombesAleatoirement(){
         Random random= new Random();
         for (int i=0;i<nbBombes;i++) {  
-            int h= random.nextInt(nbColonnes);
-            int l= random.nextInt(nbLignes);
-            if (matrice[l][h].isPresenceBombe()) {
+            int h= random.nextInt(nbLignes);
+            int l= random.nextInt(nbColonnes);
+            if (matrice[h][l].isPresenceBombe()) {
                 i--;
             }
             else {
-                matrice[l][h].placerBombe();
+                matrice[h][l].placerBombe();
             }
         }
     }
@@ -101,19 +101,19 @@ public class GrilleDeJeu {
                                 
                             }
                         }
-                    }    
+                    }
                 }
             matrice[i][j].setNbBombesAdjacentes(BombesAdjacentes);
             }
         }
         
     }
-    public void revelerCellule(int ligne, int colonne) {
+    public void revelCellule(int ligne, int colonne) {
         if (matrice[ligne][colonne].isDevoilee()){           
             return;
         
         }
-        matrice[ligne][colonne].RevelerCellule();
+        matrice[ligne][colonne].revelerCellule();
         
         /*CelluleGraphique bouton_cellule = (CelluleGraphique) PanneauGrille.getComponentAt(colonne* bouton_cellule.getWidth(), ligne*bouton_cellule.getHeight());
         bouton_cellule.repaint();*/
@@ -124,16 +124,18 @@ public class GrilleDeJeu {
         }
         
             if (matrice[ligne][colonne].getNbBombesAdjacentes()==0) {
-                for (int h=ligne-1;h<=ligne+1;h++) {
-                    for (int l=colonne-1;l<=colonne+1;l++) {
+                
+                for (int l=colonne-1;l<=colonne+1;l++) {
+                    for (int h=ligne-1;h<=ligne+1;h++) {
                         if (h>=0 && h<nbLignes && l>=0 && l<nbColonnes) {
                             if (!matrice[h][l].isDevoilee()){
-                                revelerCellule(h, l);                                
+                                revelCellule(h, l);                                
                             }
                         }
                            
                     }
-                } 
+                }
+                 
             }
             
         
@@ -149,7 +151,7 @@ public class GrilleDeJeu {
                 }
             }
         }
-        victoire=2;
+        victoire=true;
         return true;
     }
 
