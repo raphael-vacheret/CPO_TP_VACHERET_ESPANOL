@@ -1,8 +1,7 @@
 package miniprojet;
 
-
-
-
+import miniprojet.CelluleGraphique;
+import miniprojet.Cellule;
 import java.awt.GridLayout;
 import java.util.Scanner;
 import javax.swing.JButton;
@@ -28,23 +27,54 @@ public class fenetrePrincipale extends javax.swing.JFrame {
         initComponents();
         int nbLignes = 8;
         int nbColonnes =10;
+        /*PanneauGrille = new javax.swing.JPanel();*/ 
         int nbBombes= 10;
-        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
+        int nbVie=3;
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes, nbVie);
+        
+        initialiserPartie();
+        
         
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
-        for (int i=0; i < nbLignes; i++) {
-            for (int j=0; j < nbColonnes; j++ ) {
-                CelluleGraphique bouton_cellule = new CelluleGraphique(i,j,grille.matrice[i][j]); // création d'un bouton
-                PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+        
+            for (int i=0; i < nbLignes; i++) {
+                for (int j=0; j < nbColonnes; j++ ) {
+                    final int l = i;
+                    final int k = j;
+                    CelluleGraphique bouton_cellule = new CelluleGraphique(i,j,grille.matrice[i][j]); // création d'un bouton
+                    PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+                
+                
+                    bouton_cellule.addActionListener(evt -> {
+                   
+                        grille.revelerCellule(l,k);
+                        bouton_cellule.repaint();
+                    
+                        if (bouton_cellule.celluleassocié.isPresenceBombe()) {
+                            System.out.println("Bombe ! Partie terminée.");
+                        } else {
+                            System.out.println("Cellule sûre : " + bouton_cellule.celluleassocié.getNbBombesAdjacentes() + " bombes adjacentes.");
+                        }
+                        
+                        // Vérifie si la partie est terminée ou si la victoire est atteinte
+                        if (grille.getNbVie() <= 0) {
+                            System.out.println("Game Over!");
+                        } else if (grille.toutesCellulesRevelees()) {
+                            System.out.println("Victoire!");
+                        }
+                });
             }
         }
+        PanneauGrille.revalidate();
+        PanneauGrille.repaint();
     }
     public void initialiserPartie() {
         grille.placerBombesAleatoirement();
+        grille.calculerBombesAdjacentes();
+        
         
     }
-
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,10 +136,8 @@ public class fenetrePrincipale extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new fenetrePrincipale().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new fenetrePrincipale().setVisible(true);
         });
     }
 
@@ -117,3 +145,9 @@ public class fenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauGrille;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+
+
+

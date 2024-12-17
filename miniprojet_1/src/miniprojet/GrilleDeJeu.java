@@ -1,6 +1,8 @@
 package miniprojet;
 import java.util.Random;
+import javax.swing.JPanel;
 import miniprojet.Cellule;
+import miniprojet.fenetrePrincipale;
 /**
  *
  * @author Administrateur
@@ -11,7 +13,7 @@ public class GrilleDeJeu {
     private int nbBombes;
     private int victoire=0;
     private int nbVie;
-    
+   
     public Cellule[][] matrice = new Cellule[nbLignes][nbColonnes];
 
     GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes,int nbVie) {
@@ -19,6 +21,7 @@ public class GrilleDeJeu {
         this.nbColonnes = nbColonnes;
         this.nbBombes = nbBombes;
         this.nbVie = nbVie;
+        
         this.matrice = new Cellule[nbLignes][nbColonnes];
         
         // Initialisation des cellules
@@ -72,7 +75,7 @@ public class GrilleDeJeu {
     
     public void placerBombesAleatoirement(){
         Random random= new Random();
-        for (int i=0;i<nbBombes;i++) {   
+        for (int i=0;i<nbBombes;i++) {  
             int h= random.nextInt(nbColonnes);
             int l= random.nextInt(nbLignes);
             if (matrice[l][h].isPresenceBombe()) {
@@ -89,14 +92,13 @@ public class GrilleDeJeu {
             for (int j=0;j<nbColonnes;j++) {
                 int BombesAdjacentes=0;
                 if(matrice[i][j].isPresenceBombe()==false) {
-                    for (int h=i-1;h<=i+1;h++) {
+                    for (int h=i-1;h<=1+i;h++) {
                         for (int l=j-1;l<=j+1;l++) {
-                            if (h>=0 && h<nbLignes) {
-                                if (l>=0 && l<nbColonnes) {
+                            if (h>=0 && h<nbLignes && l>=0 && l<nbColonnes) {
                                     if (matrice[h][l].isPresenceBombe()==true) {
                                         BombesAdjacentes++;
                                     }
-                                }
+                                
                             }
                         }
                     }    
@@ -112,17 +114,21 @@ public class GrilleDeJeu {
         
         }
         matrice[ligne][colonne].RevelerCellule();
+        
+        /*CelluleGraphique bouton_cellule = (CelluleGraphique) PanneauGrille.getComponentAt(colonne* bouton_cellule.getWidth(), ligne*bouton_cellule.getHeight());
+        bouton_cellule.repaint();*/
+        
         if(matrice[ligne][colonne].isPresenceBombe()==true) {
             //victoire=1;
             nbVie=nbVie-1;
         }
-        else {
+        
             if (matrice[ligne][colonne].getNbBombesAdjacentes()==0) {
                 for (int h=ligne-1;h<=ligne+1;h++) {
                     for (int l=colonne-1;l<=colonne+1;l++) {
-                        if (l>=0 && l<nbColonnes) {
-                            if (h>=0 && h<nbLignes) {
-                                this.revelerCellule(h, l);                                
+                        if (h>=0 && h<nbLignes && l>=0 && l<nbColonnes) {
+                            if (!matrice[h][l].isDevoilee()){
+                                revelerCellule(h, l);                                
                             }
                         }
                            
@@ -130,7 +136,7 @@ public class GrilleDeJeu {
                 } 
             }
             
-        }
+        
     }
     public boolean getPresenceBombe(int i, int j)  {
         return matrice[i][j].isPresenceBombe()==true;
