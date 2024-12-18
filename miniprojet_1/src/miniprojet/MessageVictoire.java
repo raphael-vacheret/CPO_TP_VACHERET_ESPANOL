@@ -84,6 +84,7 @@ public class MessageVictoire extends javax.swing.JFrame {
 
     private void RegameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegameActionPerformed
         new fenetrePrincipale().setVisible(true);
+        dispose();
     }//GEN-LAST:event_RegameActionPerformed
 
     /**

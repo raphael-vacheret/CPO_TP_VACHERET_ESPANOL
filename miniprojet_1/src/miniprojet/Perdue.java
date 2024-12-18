@@ -80,6 +80,7 @@ public class Perdue extends javax.swing.JFrame {
 
     private void regameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regameActionPerformed
         new fenetrePrincipale().setVisible(true);
+        dispose();
     }//GEN-LAST:event_regameActionPerformed
 
     private void QuiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuiteActionPerformed
