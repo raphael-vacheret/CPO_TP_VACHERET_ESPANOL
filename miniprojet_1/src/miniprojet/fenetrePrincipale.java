@@ -48,7 +48,7 @@ public class fenetrePrincipale extends javax.swing.JFrame {
                     bouton_cellule.addActionListener(evt -> {
                    
                         grille.revelCellule(l,k);
-                        bouton_cellule.repaint();
+                        PanneauGrille.repaint();
                     
                         if (bouton_cellule.celluleassocié.isPresenceBombe()) {
                             System.out.println("Bombe ! Partie terminée.");
