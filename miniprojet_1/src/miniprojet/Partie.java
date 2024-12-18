@@ -24,7 +24,7 @@ public class Partie {
             case 1 -> { // Facile
                 nbLignes = 9;
                 nbColonnes = 9;
-                nbBombes = 10;
+                nbBombes = 7;
                 nbVie = 3;
             }
             case 2 -> { // Moyenne

@@ -146,7 +146,7 @@ public class GrilleDeJeu {
     public boolean toutesCellulesRevelees() {
         for (int i=0;i<nbLignes;i++) {
             for (int j=0;j<nbColonnes;j++) {
-                if (matrice[i][j].isPresenceBombe()==false || matrice[i][j].isDevoilee()==false) {
+                if (nbBombes+matrice[i][j].getCasedevoilee()!=nbLignes*nbColonnes) {
                     return false;
                 }
             }
