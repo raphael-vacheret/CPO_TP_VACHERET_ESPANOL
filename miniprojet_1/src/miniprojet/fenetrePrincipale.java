@@ -48,7 +48,7 @@ public class fenetrePrincipale extends javax.swing.JFrame {
                     bouton_cellule.addActionListener(evt -> {
                    
                         grille.revelCellule(l,k);
-                        bouton_cellule.repaint();
+                        PanneauGrille.repaint();
                     
                         if (bouton_cellule.celluleassocié.isPresenceBombe()) {
                             System.out.println("Bombe ! Partie terminée.");
@@ -144,6 +144,14 @@ public class fenetrePrincipale extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauGrille;
     // End of variables declaration//GEN-END:variables
+
+    public void MessageDeVictoire (){
+        MessageVictoire M= new MessageVictoire();
+        M.setVisible(true);
+        dispose();
+    }
+
+
 }
 
 
