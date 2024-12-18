@@ -54,7 +54,7 @@ public class Cellule {
     public String toString() {
         
         if (!devoilee) { // Vérifie si la cellule n'est pas dévoilée
-            return " ? ";
+            return "?";
         } else {
             if (presenceBombe) { // Vérifie la présence d'une bombe
                 return "B";
