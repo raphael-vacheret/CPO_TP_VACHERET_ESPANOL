@@ -14,6 +14,7 @@ public class Cellule {
     public boolean devoilee;
     private int nbBombesAdjacentes;
     private boolean revellee;
+    private int casedevoilee=0;
 
     public boolean isPresenceBombe() {
         return presenceBombe;
@@ -44,6 +45,12 @@ public class Cellule {
     }
     public void revelerCellule() {
         devoilee=true;
+        casedevoilee+=1;
+        
+    }
+
+    public int getCasedevoilee() {
+        return casedevoilee;
     }
 
     public void setNbBombesAdjacentes(int nbBombesAdjacentes) {
@@ -55,7 +62,6 @@ public class Cellule {
         
         if (!devoilee) { // Vérifie si la cellule n'est pas dévoilée
             return "?";
-            
         } else {
             if (presenceBombe) { // Vérifie la présence d'une bombe
                 return "B";
