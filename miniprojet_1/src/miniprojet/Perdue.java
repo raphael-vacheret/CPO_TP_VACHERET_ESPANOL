@@ -8,12 +8,12 @@ package miniprojet;
  *
  * @author bapti
  */
-public class MessageVictoire extends javax.swing.JFrame {
+public class Perdue extends javax.swing.JFrame {
 
     /**
-     * Creates new form MessageVictoire
+     * Creates new form Perdue
      */
-    public MessageVictoire() {
+    public Perdue() {
         initComponents();
     }
 
@@ -26,16 +26,18 @@ public class MessageVictoire extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Regame = new javax.swing.JButton();
+        Perdue = new javax.swing.JLabel();
+        regame = new javax.swing.JButton();
         Quite = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Regame.setText("Rejouer");
-        Regame.addActionListener(new java.awt.event.ActionListener() {
+        Perdue.setText("Vous Avez Perdu...");
+
+        regame.setText("Rejouer");
+        regame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegameActionPerformed(evt);
+                regameActionPerformed(evt);
             }
         });
 
@@ -46,45 +48,43 @@ public class MessageVictoire extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("  VICTOIRE !!!");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Perdue, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Regame)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Quite))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGap(85, 85, 85)
+                .addComponent(regame)
+                .addGap(72, 72, 72)
+                .addComponent(Quite)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(Perdue, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Regame)
+                    .addComponent(regame)
                     .addComponent(Quite))
-                .addGap(80, 80, 80))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void regameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regameActionPerformed
+        new fenetrePrincipale().setVisible(true);
+    }//GEN-LAST:event_regameActionPerformed
+
     private void QuiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuiteActionPerformed
         dispose();
     }//GEN-LAST:event_QuiteActionPerformed
-
-    private void RegameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegameActionPerformed
-        new fenetrePrincipale().setVisible(true);
-    }//GEN-LAST:event_RegameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,27 +103,27 @@ public class MessageVictoire extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MessageVictoire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perdue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MessageVictoire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perdue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MessageVictoire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perdue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MessageVictoire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perdue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MessageVictoire().setVisible(true);
+                new Perdue().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Perdue;
     private javax.swing.JButton Quite;
-    private javax.swing.JButton Regame;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton regame;
     // End of variables declaration//GEN-END:variables
 }

@@ -51,17 +51,18 @@ public class fenetrePrincipale extends javax.swing.JFrame {
                         PanneauGrille.repaint();
                     
                         if (bouton_cellule.celluleassocié.isPresenceBombe()) {
-                            System.out.println("Bombe ! Partie terminée.");
+                            
+                            System.out.println("Bombe ! vous perdez une vie.");
                         } else {
                             System.out.println("Cellule sûre : " + bouton_cellule.celluleassocié.getNbBombesAdjacentes() + " bombes adjacentes.");
                         }
                         
                         // Vérifie si la partie est terminée ou si la victoire est atteinte
                         if (grille.getNbVie() <= 0) {
-                            System.out.println("Game Over!");
+                            Perdue();
                         } else if (grille.toutesCellulesRevelees()) {
                             MessageDeVictoire ();
-                            System.out.println("Victoire!");
+                            
                         }
                     });
                 }
@@ -151,7 +152,11 @@ public class fenetrePrincipale extends javax.swing.JFrame {
         M.setVisible(true);
         dispose();
     }
-
+    public void Perdue (){
+        Perdue P= new Perdue();
+        P.setVisible(true);
+        dispose();
+    }
 
 }
 
