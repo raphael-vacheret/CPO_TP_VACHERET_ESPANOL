@@ -146,13 +146,13 @@ public class GrilleDeJeu {
     public boolean toutesCellulesRevelees() {
         for (int i=0;i<nbLignes;i++) {
             for (int j=0;j<nbColonnes;j++) {
-                if (matrice[i][j].isPresenceBombe() || matrice[i][j].isDevoilee()) {
-                    victoire=true;
-                    return true;
+                if (!matrice[i][j].isPresenceBombe() && !matrice[i][j].isDevoilee()) {
+                    return false;
                 }
             }
         }
-        return false;
+        victoire=true;
+        return true;
     }
 
     @Override
