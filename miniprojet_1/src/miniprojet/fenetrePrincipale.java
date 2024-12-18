@@ -60,6 +60,7 @@ public class fenetrePrincipale extends javax.swing.JFrame {
                         if (grille.getNbVie() <= 0) {
                             System.out.println("Game Over!");
                         } else if (grille.toutesCellulesRevelees()) {
+                            MessageDeVictoire ();
                             System.out.println("Victoire!");
                         }
                     });
